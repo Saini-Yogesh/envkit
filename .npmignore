@@ -1,0 +1,31 @@
+# Files/dirs excluded from the published npm package
+# (package.json's "files" field controls what IS included)
+
+# Environment files — never ship secrets
+.env
+.env.*
+!.env.example
+
+# Development / CI
+.github/
+.gitignore
+.vscode/
+.idea/
+
+# Tests
+test/
+test/__tmp_*/
+
+# Examples (not needed by consumers)
+examples/
+
+# Dev config files
+eslint.config.js
+.prettierrc
+.prettierignore
+tsconfig.json
+
+# Logs and temp
+*.log
+*.tgz
+node_modules/

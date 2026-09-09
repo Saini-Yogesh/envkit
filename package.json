@@ -1,0 +1,67 @@
+{
+  "name": "envkit",
+  "version": "0.1.0",
+  "description": "Simple and powerful environment variable loading and validation toolkit for Node.js.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "types": "./types/index.d.ts"
+    }
+  },
+  "main": "./src/index.js",
+  "types": "./types/index.d.ts",
+  "bin": {
+    "envkit": "./bin/envkit.js"
+  },
+  "files": [
+    "src/",
+    "bin/",
+    "types/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test test/parser.test.js test/loader.test.js test/validator.test.js test/cli.test.js test/integration.test.js",
+    "test:watch": "node --test --watch test/parser.test.js test/loader.test.js test/validator.test.js test/cli.test.js test/integration.test.js",
+    "lint": "eslint src/ bin/ test/ examples/",
+    "lint:fix": "eslint src/ bin/ test/ examples/ --fix",
+    "format": "prettier --write src/ bin/ test/ examples/ types/",
+    "check": "npm run lint && npm test",
+    "pack:inspect": "npm pack --dry-run"
+  },
+  "keywords": [
+    "env",
+    "environment",
+    "dotenv",
+    "config",
+    "configuration",
+    "validation",
+    "schema",
+    "environment-variables",
+    "nodejs",
+    "cli",
+    "toolkit",
+    "envkit"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saini-yogesh/envkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saini-yogesh/envkit/issues"
+  },
+  "homepage": "https://github.com/saini-yogesh/envkit#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.5.0",
+    "eslint": "^10.10.0",
+    "prettier": "^3.9.6"
+  }
+}
