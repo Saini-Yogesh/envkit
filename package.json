@@ -1,5 +1,5 @@
 {
-  "name": "envkit",
+  "name": "@yogesh_1___/envkit",
   "version": "0.1.0",
   "description": "Simple and powerful environment variable loading and validation toolkit for Node.js.",
   "type": "module",
