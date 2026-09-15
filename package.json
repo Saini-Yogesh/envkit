@@ -46,7 +46,9 @@
     "envkit"
   ],
   "author": "",
-  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saini-yogesh/envkit.git"
