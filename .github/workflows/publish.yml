@@ -1,0 +1,45 @@
+name: Publish to npm
+
+# Trigger when a Release is *published* (i.e. after you click “Publish release”)
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      # ------------------------------------------------------------------
+      # 1️⃣  Checkout the repository (the code you just released)
+      # ------------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ------------------------------------------------------------------
+      # 2️⃣  Set up Node (use the same version you develop with)
+      # ------------------------------------------------------------------
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'                     # matches the version you used locally
+          registry-url: 'https://registry.npmjs.org'
+
+      # ------------------------------------------------------------------
+      # 3️⃣  Install dependencies (npm ci = clean install from lockfile)
+      # ------------------------------------------------------------------
+      - name: Install dependencies
+        run: npm ci
+
+      # ------------------------------------------------------------------
+      # 4️⃣  Run your test + lint suite – you only want to publish if they pass
+      # ------------------------------------------------------------------
+      - name: Run tests & linting
+        run: npm run check      # defined in package.json as `npm run lint && npm test`
+
+      # ------------------------------------------------------------------
+      # 5️⃣  Publish to npm (uses the token stored in GitHub Secrets)
+      # ------------------------------------------------------------------
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -12,7 +12,7 @@
   "main": "./src/index.js",
   "types": "./types/index.d.ts",
   "bin": {
-    "envkit": "./bin/envkit.js"
+    "envkit": "bin/envkit.js"
   },
   "files": [
     "src/",
